@@ -6,7 +6,7 @@ INCLUDE=-I$(SRC)/.
 BIN=./bin
 SRC=./src
 OUT=$(BIN)/Cartulum
-OBJS=$(BIN)/simulation.o $(BIN)/main.o
+OBJS=$(BIN)/cart.o $(BIN)/simulation.o $(BIN)/main.o
 
 all: $(OUT)
 

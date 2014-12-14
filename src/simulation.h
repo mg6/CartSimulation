@@ -2,26 +2,38 @@
 #define __Simulation__
 
 #include "common.h"
-#include "primitives.h"
+#include "cart.h"
 
 struct Simulation
 {
-    Simulation() : display(nullptr), queue(nullptr), timer(nullptr), _done(false), r(32), g(32), b(32) {}
+    Simulation() : display(nullptr), queue(nullptr), redraw_timer(nullptr),
+      update_timer(nullptr), _done(false), bgr(32), bgg(32), bgb(32),
+      cart(nullptr), width(800), height(600), paused(false) {}
 
     void init();
-    void handle_events();
-    void update(unsigned dt);
+    void loop();
+    bool handle_events();
+    void update(float dt);
     void draw();
     void cleanup();
     bool done();
 
     bool _done;
-    char r;
-    char g;
-    char b;
+    bool paused;
+    char bgr;
+    char bgg;
+    char bgb;
+    int width;
+    int height;
+    const float fps = 60;
+    const float updates_per_sec = 100;
     ALLEGRO_DISPLAY* display;
     ALLEGRO_EVENT_QUEUE* queue;
-    ALLEGRO_TIMER* timer;
+    ALLEGRO_TIMER* redraw_timer;
+    ALLEGRO_TIMER* update_timer;
+    Cart* cart;
+
+    const float g = 9.81;
 };
 
 #endif

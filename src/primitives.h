@@ -4,38 +4,42 @@
 #include "common.h"
 #include "drawable.h"
 
-struct Rectangle : Drawable
+struct Rectangle : public virtual Drawable
 {
-    float x;
-    float y;
     float w;
     float h;
-    float r;
-    float g;
-    float b;
 
-    Rectangle(float x, float y, float w, float h, char r = 255, char g = 0, char b = 0) : x(x), y(y), w(w), h(h), r(r), g(g), b(b) {}
-
-    void draw()
+    Rectangle(float x, float y, float w, float h, char r = 255, char g = 0, char b = 0) : w(w), h(h)
     {
-        al_draw_filled_rectangle(x, y, x+w, y+h, al_map_rgb(r, g, b));
+        this->x = x;
+        this->y = y;
+        this->r = r;
+        this->g = g;
+        this->b = b;
+    }
+
+    void draw(int height)
+    {
+        al_draw_filled_rectangle(x-w/2, height-(y+h/2), x+w/2, height-(y-h/2), al_map_rgb(r, g, b));
     }
 };
 
-struct Circle : Drawable
+struct Circle : public virtual Drawable
 {
-    float x;
-    float y;
     float rad;
-    char r;
-    char g;
-    char b;
 
-    Circle(float x, float y, float rad, char r = 255, char g = 0, char b = 0) : x(x), y(y), rad(rad), r(r), g(g), b(b) {}
-
-    void draw()
+    Circle(float x, float y, float rad, char r = 255, char g = 0, char b = 0) : rad(rad)
     {
-        al_draw_filled_circle(x, y, rad, al_map_rgb(r, g, b));
+        this->x = x;
+        this->y = y;
+        this->r = r;
+        this->g = g;
+        this->b = b;
+    }
+
+    void draw(int height)
+    {
+        al_draw_filled_circle(x, height-y, rad, al_map_rgb(r, g, b));
     }
 };
 

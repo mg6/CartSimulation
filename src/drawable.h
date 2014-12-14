@@ -3,9 +3,21 @@
 
 #include "common.h"
 
-class Drawable
+struct Drawable
 {
-    virtual void draw() = 0;
+    float x;
+    float y;
+
+    char r;
+    char g;
+    char b;
+
+    virtual void draw(int height) = 0;
+    virtual void setPos(float x, float y)
+    {
+        this->x = x;
+        this->y = y;
+    }
 };
 
 #endif

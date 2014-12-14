@@ -6,14 +6,7 @@ int main(int argc, char** argv)
     Simulation sim;
 
     sim.init();
-
-    while (!sim.done())
-    {
-        sim.handle_events();
-        sim.update(15);
-        sim.draw();
-    }
-
+    sim.loop();
     sim.cleanup();
 
     return 0;
