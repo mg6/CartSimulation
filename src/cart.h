@@ -1,28 +1,26 @@
 #ifndef __Cart__
 #define __Cart__
 
+#include "common.h"
 #include "primitives.h"
 
 struct Cart : public virtual Drawable
 {
-    Cart(float x, float y, float w, float h);
-    ~Cart();
-
-    float w;    // width
-    float h;    // height
-
-    float m;    // mass
-    float fx;   // force
-    float vx;   // velocity
-    float ax;   // acceleration
+    Cart(Drawable* parent, float w, float h, float mass) : parent(parent), w(w), h(h), mass(mass)
+    {
+        r = 255;
+        g = 127;
+        b = 0;
+    }
 
     void update(float dt);
     void draw(int height);
 
-    Circle* ball;
-    Circle* wheel1;
-    Circle* wheel2;
-    Rectangle* cart;
+    float w;
+    float h;
+    float mass;
+
+    Drawable* parent;
 };
 
 #endif

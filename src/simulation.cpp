@@ -1,5 +1,4 @@
 #include "primitives.h"
-#include "cart.h"
 #include "simulation.h"
 
 void Simulation::init()
@@ -10,7 +9,7 @@ void Simulation::init()
     if (!al_install_keyboard())
         exit(1);
 
-    al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW);
+    al_set_new_display_flags(ALLEGRO_WINDOWED);
     al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 1, ALLEGRO_SUGGEST);
     al_set_new_display_option(ALLEGRO_SAMPLES, 8, ALLEGRO_SUGGEST);
 
@@ -34,7 +33,7 @@ void Simulation::init()
     al_start_timer(redraw_timer);
     al_start_timer(update_timer);
 
-    cart = new Cart(100, 500, 100, 50);
+    cart = new PendulumCart(100, 500, 100, 50);
 }
 
 void Simulation::loop()

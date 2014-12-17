@@ -2,7 +2,7 @@
 #define __Simulation__
 
 #include "common.h"
-#include "cart.h"
+#include "pendulumcart.h"
 
 struct Simulation
 {
@@ -31,9 +31,7 @@ struct Simulation
     ALLEGRO_EVENT_QUEUE* queue;
     ALLEGRO_TIMER* redraw_timer;
     ALLEGRO_TIMER* update_timer;
-    Cart* cart;
-
-    const float g = 9.81;
+    PendulumCart* cart;
 };
 
 #endif
