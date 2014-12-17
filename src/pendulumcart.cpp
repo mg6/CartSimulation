@@ -1,4 +1,4 @@
-#include "pendulumcart.h"
+#include "pendulumcart.hpp"
 
 PendulumCart::PendulumCart(float x, float y, float w, float h)
 {
@@ -47,3 +47,4 @@ void PendulumCart::draw(int height)
     cart->draw(height);
     pendulum->draw(height);
 }
+

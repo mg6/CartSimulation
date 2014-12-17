@@ -1,8 +1,8 @@
 #ifndef __Circle__
 #define __Circle__
 
-#include "common.h"
-#include "drawable.h"
+#include "common.hpp"
+#include "drawable.hpp"
 
 struct Rectangle : public virtual Drawable
 {

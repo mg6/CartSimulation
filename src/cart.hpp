@@ -1,8 +1,8 @@
 #ifndef __Cart__
 #define __Cart__
 
-#include "common.h"
-#include "primitives.h"
+#include "common.hpp"
+#include "primitives.hpp"
 
 struct Cart : public virtual Drawable
 {

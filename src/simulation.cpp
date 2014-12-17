@@ -1,5 +1,5 @@
-#include "primitives.h"
-#include "simulation.h"
+#include "primitives.hpp"
+#include "simulation.hpp"
 
 void Simulation::init()
 {
@@ -62,10 +62,10 @@ void Simulation::loop()
                         _done = true;
                         break;
                     case ALLEGRO_KEY_LEFT:
-                        cart->vx -= 5;
+                        cart->vx -= 10;
                         break;
                     case ALLEGRO_KEY_RIGHT:
-                        cart->vx += 5;
+                        cart->vx += 10;
                         break;
                 }
                 break;

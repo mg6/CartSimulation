@@ -1,4 +1,4 @@
-#include "pendulum.h"
+#include "pendulum.hpp"
 
 void Pendulum::update(float dt)
 {

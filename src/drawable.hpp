@@ -1,7 +1,7 @@
 #ifndef __Drawable__
 #define __Drawable__
 
-#include "common.h"
+#include "common.hpp"
 
 struct Drawable
 {

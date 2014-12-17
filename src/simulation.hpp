@@ -1,8 +1,8 @@
 #ifndef __Simulation__
 #define __Simulation__
 
-#include "common.h"
-#include "pendulumcart.h"
+#include "common.hpp"
+#include "pendulumcart.hpp"
 
 struct Simulation
 {

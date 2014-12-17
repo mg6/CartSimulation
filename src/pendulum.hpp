@@ -1,8 +1,8 @@
 #ifndef __Pendulum__
 #define __Pendulum__
 
-#include "common.h"
-#include "primitives.h"
+#include "common.hpp"
+#include "primitives.hpp"
 
 struct Pendulum : public virtual Drawable
 {

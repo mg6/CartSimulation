@@ -1,5 +1,5 @@
-#include "common.h"
-#include "simulation.h"
+#include "common.hpp"
+#include "simulation.hpp"
 
 int main(int argc, char** argv)
 {

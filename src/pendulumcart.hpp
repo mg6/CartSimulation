@@ -1,9 +1,9 @@
 #ifndef __PendulumCart__
 #define __PendulumCart__
 
-#include "primitives.h"
-#include "pendulum.h"
-#include "cart.h"
+#include "primitives.hpp"
+#include "pendulum.hpp"
+#include "cart.hpp"
 
 struct PendulumCart : public virtual Drawable
 {
