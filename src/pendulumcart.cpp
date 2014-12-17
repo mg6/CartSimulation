@@ -2,9 +2,6 @@
 
 PendulumCart::PendulumCart(float x, float y, float w, float h)
 {
-    m = 1;
-    vx = 50;
-
     this->x = x;
     this->y = y;
 
@@ -14,7 +11,6 @@ PendulumCart::PendulumCart(float x, float y, float w, float h)
 
 PendulumCart::~PendulumCart()
 {
-
     delete cart;
     delete pendulum;
 }

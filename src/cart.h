@@ -13,7 +13,7 @@ struct Cart : public virtual Drawable
         b = 0;
     }
 
-    void update(float dt);
+    void update(float dt) {}
     void draw(int height);
 
     float w;

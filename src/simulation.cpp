@@ -62,10 +62,10 @@ void Simulation::loop()
                         _done = true;
                         break;
                     case ALLEGRO_KEY_LEFT:
-                        cart->fx -= 5;
+                        cart->vx -= 5;
                         break;
                     case ALLEGRO_KEY_RIGHT:
-                        cart->fx += 5;
+                        cart->vx += 5;
                         break;
                 }
                 break;
