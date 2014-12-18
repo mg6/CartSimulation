@@ -4,26 +4,58 @@
 void Simulation::init()
 {
     if (!al_init())
+    {
+        std::cerr << "Error: Allegro initialization failed." << std::endl;
         exit(1);
+    }
+
+    al_init_font_addon();
+
+    if (!al_init_ttf_addon())
+    {
+        std::cerr << "Error: TTF addon initialization failed." << std::endl;
+        exit(1);
+    }
 
     if (!al_install_keyboard())
+    {
+        std::cerr << "Error: Keyboard installation failed." << std::endl;
         exit(1);
+    }
+
+    if (!(font = al_load_ttf_font("DejaVuSans.ttf", 16, 0)))
+    {
+        std::cerr << "Error: DejaVuSans.ttf is missing." << std::endl;
+        exit(1);
+    }
 
     al_set_new_display_flags(ALLEGRO_WINDOWED);
     al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 1, ALLEGRO_SUGGEST);
     al_set_new_display_option(ALLEGRO_SAMPLES, 8, ALLEGRO_SUGGEST);
 
     if (!(redraw_timer = al_create_timer(1.0/fps)))
+    {
+        std::cerr << "Error: Could not create redraw timer." << std::endl;
         exit(1);
+    }
 
     if (!(update_timer = al_create_timer(1.0/updates_per_sec)))
+    {
+        std::cerr << "Error: Could not create update timer." << std::endl;
         exit(1);
+    }
 
     if (!(display = al_create_display(width, height)))
+    {
+        std::cerr << "Error: Display installation failed." << std::endl;
         exit(1);
+    }
 
     if (!(queue = al_create_event_queue()))
+    {
+        std::cerr << "Error: Event queue installation failed." << std::endl;
         exit(1);
+    }
 
     al_register_event_source(queue, al_get_display_event_source(display));
     al_register_event_source(queue, al_get_keyboard_event_source());
@@ -33,7 +65,9 @@ void Simulation::init()
     al_start_timer(redraw_timer);
     al_start_timer(update_timer);
 
-    cart = new PendulumCart(100, 500, 100, 50);
+    cart = new PendulumCart(100, 300, 100, 50);
+
+    std::cout << "Info: Initialization succeeded." << std::endl;
 }
 
 void Simulation::loop()
@@ -57,15 +91,52 @@ void Simulation::loop()
                     case ALLEGRO_KEY_P:
                         paused = !paused;
                         break;
+
                     case ALLEGRO_KEY_Q:
                     case ALLEGRO_KEY_ESCAPE:
                         _done = true;
                         break;
+
                     case ALLEGRO_KEY_LEFT:
                         cart->vx -= 10;
                         break;
+
                     case ALLEGRO_KEY_RIGHT:
                         cart->vx += 10;
+                        break;
+
+                    case ALLEGRO_KEY_UP:
+                        cart->pendulum->av += 0.5;
+                        break;
+
+                    case ALLEGRO_KEY_DOWN:
+                        if (cart->pendulum->av > 0.5)
+                            cart->pendulum->av -= 0.5;
+                        break;
+
+                    case ALLEGRO_KEY_L:
+                        if (cart->pendulum->length > 1)
+                            cart->pendulum->length--;
+                        break;
+
+                    case ALLEGRO_KEY_O:
+                        cart->pendulum->length++;
+                        break;
+
+                    case ALLEGRO_KEY_J:
+                        cart->pendulum->mass -= 10;
+                        break;
+
+                    case ALLEGRO_KEY_U:
+                        cart->pendulum->mass += 10;
+                        break;
+
+                    case ALLEGRO_KEY_G:
+                        cart->cart->mass -= 10;
+                        break;
+
+                    case ALLEGRO_KEY_T:
+                        cart->cart->mass += 10;
                         break;
                 }
                 break;
@@ -102,6 +173,7 @@ void Simulation::draw()
 {
     al_clear_to_color(al_map_rgb(bgr, bgg, bgb));
     cart->draw(height);
+    // al_draw_textf(font, al_map_rgb(255, 255, 255), 5, 20, ALLEGRO_ALIGN_LEFT, status);
     al_flip_display();
 }
 
@@ -116,6 +188,9 @@ void Simulation::cleanup()
     if (display)
         al_destroy_display(display);
 
+    if (font)
+        al_destroy_font(font);
+
     if (queue)
         al_destroy_event_queue(queue);
 
@@ -126,3 +201,15 @@ bool Simulation::done()
 {
     return _done;
 }
+
+void Simulation::puts(ALLEGRO_COLOR color, float x, float y, const char* format, ...)
+{
+    char buf[256];
+    va_list args;
+    va_start(args, format);
+    vsprintf(buf, format, args);
+    va_end(args);
+
+    al_draw_text(font, color, x, y, ALLEGRO_ALIGN_LEFT, buf);
+}
+

@@ -1,6 +1,6 @@
 CXX=g++
 CFLAGS=-std=c++11
-LDFLAGS=$$(pkg-config --cflags --libs allegro-5.0 allegro_image-5.0 allegro_primitives-5.0)
+LDFLAGS=$$(pkg-config --cflags --libs allegro-5.0 allegro_image-5.0 allegro_primitives-5.0 allegro_font-5.0 allegro_ttf-5.0)
 INCLUDE=-I$(SRC)/.
 
 BIN=./bin
