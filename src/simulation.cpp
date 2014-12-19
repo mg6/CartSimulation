@@ -51,6 +51,8 @@ void Simulation::init()
         exit(1);
     }
 
+    al_set_window_title(display, "Cart & pendulum");
+
     if (!(queue = al_create_event_queue()))
     {
         std::cerr << "Error: Event queue installation failed." << std::endl;
