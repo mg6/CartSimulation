@@ -17,14 +17,12 @@ struct Simulation
     void draw();
     void cleanup();
     bool done();
-    void puts(ALLEGRO_COLOR color, float x, float y, const char* format, ...);
 
     bool _done;
     bool paused;
     char bgr;
     char bgg;
     char bgb;
-    char status[200];
     int width;
     int height;
     const float fps = 60;

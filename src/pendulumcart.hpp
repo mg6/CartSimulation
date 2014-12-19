@@ -7,7 +7,7 @@
 
 struct PendulumCart : public virtual Drawable
 {
-    PendulumCart(float x, float y, float w, float h);
+    PendulumCart(Simulation* parent, float x, float y, float w, float h);
     ~PendulumCart();
 
     float w;    // width
@@ -17,8 +17,10 @@ struct PendulumCart : public virtual Drawable
     void update(float dt);
     void draw(int height);
 
+    Simulation* parent;
     Cart* cart;
     Pendulum* pendulum;
 };
 
 #endif
+

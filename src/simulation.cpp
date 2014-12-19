@@ -65,7 +65,7 @@ void Simulation::init()
     al_start_timer(redraw_timer);
     al_start_timer(update_timer);
 
-    cart = new PendulumCart(100, 300, 100, 50);
+    cart = new PendulumCart(this, 100, 300, 100, 50);
 
     std::cout << "Info: Initialization succeeded." << std::endl;
 }
@@ -90,6 +90,7 @@ void Simulation::loop()
                 {
                     case ALLEGRO_KEY_P:
                         paused = !paused;
+                        std::cout << "Simulation " << (paused ? "paused" : "unpaused") << std::endl;
                         break;
 
                     case ALLEGRO_KEY_Q:
@@ -99,44 +100,54 @@ void Simulation::loop()
 
                     case ALLEGRO_KEY_LEFT:
                         cart->vx -= 10;
+                        std::cout << "Cart velocity = " << cart->vx << std::endl;
                         break;
 
                     case ALLEGRO_KEY_RIGHT:
                         cart->vx += 10;
+                        std::cout << "Cart velocity = " << cart->vx << std::endl;
                         break;
 
                     case ALLEGRO_KEY_UP:
                         cart->pendulum->av += 0.5;
+                        std::cout << "Pendulum angular velocity = " << cart->pendulum->av << std::endl;
                         break;
 
                     case ALLEGRO_KEY_DOWN:
                         if (cart->pendulum->av > 0.5)
                             cart->pendulum->av -= 0.5;
+                        std::cout << "Pendulum angular velocity = " << cart->pendulum->av << std::endl;
                         break;
 
                     case ALLEGRO_KEY_L:
                         if (cart->pendulum->length > 1)
                             cart->pendulum->length--;
+                        std::cout << "Pendulum length = " << cart->pendulum->length << std::endl;
                         break;
 
                     case ALLEGRO_KEY_O:
                         cart->pendulum->length++;
+                        std::cout << "Pendulum length = " << cart->pendulum->length << std::endl;
                         break;
 
                     case ALLEGRO_KEY_J:
                         cart->pendulum->mass -= 10;
+                        std::cout << "Pendulum mass = " << cart->pendulum->mass << std::endl;
                         break;
 
                     case ALLEGRO_KEY_U:
                         cart->pendulum->mass += 10;
+                        std::cout << "Pendulum mass = " << cart->pendulum->mass << std::endl;
                         break;
 
                     case ALLEGRO_KEY_G:
                         cart->cart->mass -= 10;
+                        std::cout << "Cart mass = " << cart->cart->mass << std::endl;
                         break;
 
                     case ALLEGRO_KEY_T:
                         cart->cart->mass += 10;
+                        std::cout << "Cart mass = " << cart->cart->mass << std::endl;
                         break;
                 }
                 break;
@@ -169,11 +180,19 @@ void Simulation::update(float dt)
     cart->update(dt);
 }
 
+#ifdef __GNUC__
+#   define puts(x, y, args...) al_draw_textf(font, al_map_rgb(255, 255, 255), x, y, 0, args)
+#else
+#   define puts(x, y, ...)     al_draw_textf(font, al_map_rgb(255, 255, 255), x, y, 0, __VA_ARGS__)
+#endif
+
 void Simulation::draw()
 {
     al_clear_to_color(al_map_rgb(bgr, bgg, bgb));
     cart->draw(height);
-    // al_draw_textf(font, al_map_rgb(255, 255, 255), 5, 20, ALLEGRO_ALIGN_LEFT, status);
+    puts(5, 5, "Cart: mass = %.2f, vx = %.2f, x = %.2f", cart->cart->mass, cart->vx, cart->x);
+    puts(5, 21, "Pendulum: mass = %.2f, length = %.2lf, angle = %.2lf rad, angular v = %.2lf",
+            cart->pendulum->mass, cart->pendulum->length, cart->pendulum->angle, cart->pendulum->av);
     al_flip_display();
 }
 
@@ -195,21 +214,12 @@ void Simulation::cleanup()
         al_destroy_event_queue(queue);
 
     delete cart;
+
+    std::cout << "Info: Finished successfuly." << std::endl;
 }
 
 bool Simulation::done()
 {
     return _done;
-}
-
-void Simulation::puts(ALLEGRO_COLOR color, float x, float y, const char* format, ...)
-{
-    char buf[256];
-    va_list args;
-    va_start(args, format);
-    vsprintf(buf, format, args);
-    va_end(args);
-
-    al_draw_text(font, color, x, y, ALLEGRO_ALIGN_LEFT, buf);
 }
 

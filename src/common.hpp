@@ -12,4 +12,10 @@
 
 const float gravity = 9.81;
 
+struct Cart;
+struct Pendulum;
+struct PendulumCart;
+struct Simulation;
+
 #endif
+

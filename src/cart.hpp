@@ -6,7 +6,7 @@
 
 struct Cart : public virtual Drawable
 {
-    Cart(Drawable* parent, float w, float h, float mass) : parent(parent), w(w), h(h), mass(mass)
+    Cart(PendulumCart* parent, float w, float h, float mass) : parent(parent), w(w), h(h), mass(mass)
     {
         r = 255;
         g = 127;
@@ -20,7 +20,8 @@ struct Cart : public virtual Drawable
     float h;
     float mass;
 
-    Drawable* parent;
+    PendulumCart* parent;
 };
 
 #endif
+
