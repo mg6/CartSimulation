@@ -110,6 +110,11 @@ void Simulation::loop()
                         std::cout << "Cart velocity = " << cart->vx << std::endl;
                         break;
 
+                    case ALLEGRO_KEY_D:
+                        cart->vx = -cart->vx;
+                        std::cout << "Cart inverted = " << cart->vx << std::endl;
+                        break;
+
                     case ALLEGRO_KEY_UP:
                         cart->pendulum->av += 0.5;
                         std::cout << "Pendulum angular velocity = " << cart->pendulum->av << std::endl;

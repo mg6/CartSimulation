@@ -7,8 +7,8 @@ PendulumCart::PendulumCart(Simulation* parent, float x, float y, float w, float 
     this->y = y;
     this->vx = 15;
 
-    cart = new Cart(this, w, h, 5);
-    pendulum = new Pendulum(this, 3, 10, 2, 10);
+    cart = new Cart(this, w, h, 10);
+    pendulum = new Pendulum(this, 3, 100, 3, 10);
 }
 
 PendulumCart::~PendulumCart()
