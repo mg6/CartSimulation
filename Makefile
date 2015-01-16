@@ -5,10 +5,14 @@ INCLUDE=-I$(SRC)/.
 
 BIN=./bin
 SRC=./src
+ASSETS=./assets
 OUT=$(BIN)/Cartulum
 OBJS=$(BIN)/pendulum.o $(BIN)/cart.o $(BIN)/pendulumcart.o $(BIN)/simulation.o $(BIN)/main.o
 
-all: $(OUT)
+all: prebuild $(OUT)
+
+prebuild:
+	cp -r $(ASSETS)/* $(BIN)/
 
 $(OUT): $(OBJS)
 	$(CXX) $(OBJS) -o $(OUT) $(INCLUDE) $(CFLAGS) $(LDFLAGS)
