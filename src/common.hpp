@@ -1,6 +1,7 @@
 #ifndef __Common__
 #define __Common__
 
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include <cmath>
 #include <cstdarg>

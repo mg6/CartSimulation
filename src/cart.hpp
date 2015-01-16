@@ -8,8 +8,8 @@ struct Cart : public virtual Drawable
 {
     Cart(PendulumCart* parent, float w, float h, float mass) : parent(parent), w(w), h(h), mass(mass)
     {
-        r = 255;
-        g = 127;
+        r = char(255);
+        g = char(127);
         b = 0;
     }
 
