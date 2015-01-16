@@ -138,7 +138,8 @@ void Simulation::loop()
                         break;
 
                     case ALLEGRO_KEY_J:
-                        cart->pendulum->mass -= 10;
+                        if (cart->pendulum->mass > 10)
+                            cart->pendulum->mass -= 10;
                         std::cout << "Pendulum mass = " << cart->pendulum->mass << std::endl;
                         break;
 
@@ -148,7 +149,8 @@ void Simulation::loop()
                         break;
 
                     case ALLEGRO_KEY_G:
-                        cart->cart->mass -= 10;
+                        if (cart->cart->mass > 10)
+                            cart->cart->mass -= 10;
                         std::cout << "Cart mass = " << cart->cart->mass << std::endl;
                         break;
 
