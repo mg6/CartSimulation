@@ -13,7 +13,13 @@ $ cd bin && ./CartSimulation
 ```
 
 ## Building under Windows
-Use the VS solution from `win/` directory.
+
+```
+$ git clone github.com:mg6/CartSimulation
+$ git submodule update
+```
+
+Proceed with the VS solution from `win/` directory.
 
 ## License
 Licensed under the terms of GNU GPL v2 license.
