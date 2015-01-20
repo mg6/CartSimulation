@@ -23,7 +23,7 @@ void Simulation::init()
         exit(1);
     }
 
-    if (!(font = al_load_ttf_font("DejaVuSans.ttf", 16, 0)))
+    if (!(font = al_load_ttf_font("DejaVuSans.ttf", 18, 0)))
     {
         std::cerr << "Error: DejaVuSans.ttf is missing." << std::endl;
         exit(1);
@@ -51,7 +51,7 @@ void Simulation::init()
         exit(1);
     }
 
-    al_set_window_title(display, "Cart & pendulum");
+    al_set_window_title(display, "Pendulum on a cart simulation");
 
     if (!(queue = al_create_event_queue()))
     {
@@ -69,7 +69,7 @@ void Simulation::init()
 
     cart = new PendulumCart(this, 100, 300, 100, 50);
 
-    std::cout << "Info: Initialization succeeded." << std::endl;
+    std::cout << "Simulation initialized." << std::endl;
 }
 
 void Simulation::loop()
@@ -110,6 +110,7 @@ void Simulation::loop()
                         std::cout << "Cart velocity = " << cart->vx << std::endl;
                         break;
 
+                    case ALLEGRO_KEY_SPACE:
                     case ALLEGRO_KEY_D:
                         cart->vx = -cart->vx;
                         std::cout << "Cart inverted = " << cart->vx << std::endl;
@@ -190,14 +191,14 @@ void Simulation::update(float dt)
 }
 
 #ifdef __GNUC__
-#   define puts(x, y, args...) al_draw_textf(font, al_map_rgb(255, 255, 255), x, y, 0, args)
+#   define puts(x, y, args...) al_draw_textf(font, al_map_rgb(COL_TEXT), x, y, 0, args)
 #else
-#   define puts(x, y, ...)     al_draw_textf(font, al_map_rgb(255, 255, 255), x, y, 0, __VA_ARGS__)
+#   define puts(x, y, ...)     al_draw_textf(font, al_map_rgb(COL_TEXT), x, y, 0, __VA_ARGS__)
 #endif
 
 void Simulation::draw()
 {
-    al_clear_to_color(al_map_rgb(bgr, bgg, bgb));
+    al_clear_to_color(al_map_rgb(COL_BACKGROUND));
     cart->draw(height);
     puts(5, 5, "Cart: mass = %.2f, vx = %.2f, x = %.2f", cart->cart->mass, cart->vx, cart->x);
     puts(5, 21, "Pendulum: mass = %.2f, length = %.2lf, angle = %.2lf rad, angular v = %.2lf",
@@ -224,11 +225,10 @@ void Simulation::cleanup()
 
     delete cart;
 
-    std::cout << "Info: Finished successfuly." << std::endl;
+    std::cout << "Simulation finished." << std::endl;
 }
 
 bool Simulation::done()
 {
     return _done;
 }
-

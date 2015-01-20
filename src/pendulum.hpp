@@ -10,9 +10,6 @@ struct Pendulum : public virtual Drawable
     {
         x = parent->x;
         y = parent->y - 100;
-        r = char(255);
-        g = char(255);
-        b = char(255);
     }
 
     ~Pendulum() {};

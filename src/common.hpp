@@ -18,5 +18,12 @@ struct Pendulum;
 struct PendulumCart;
 struct Simulation;
 
-#endif
+#define COL_ANGLE       255, 0, 0
+#define COL_BACKGROUND  255, 255, 255
+#define COL_CART        255, 127, 0
+#define COL_PENDULUM    0, 0, 0
+#define COL_TEXT        0, 0, 0
+#define COL_VELOCITY    0, 0, 255
+#define COL_WHEELS      127, 127, 127
 
+#endif

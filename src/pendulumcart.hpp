@@ -23,4 +23,3 @@ struct PendulumCart : public virtual Drawable
 };
 
 #endif
-

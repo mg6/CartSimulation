@@ -7,8 +7,7 @@
 struct Simulation
 {
     Simulation() : display(nullptr), queue(nullptr), redraw_timer(nullptr),
-      update_timer(nullptr), _done(false), bgr(32), bgg(32), bgb(32),
-      cart(nullptr), width(800), height(600), paused(false), font(nullptr) {}
+      update_timer(nullptr), _done(false), cart(nullptr), paused(false), font(nullptr) {}
 
     void init();
     void loop();
@@ -20,11 +19,8 @@ struct Simulation
 
     bool _done;
     bool paused;
-    char bgr;
-    char bgg;
-    char bgb;
-    int width;
-    int height;
+    static const int width = 800;
+    static const int height = 600;
     const float fps = 60;
     const float updates_per_sec = 100;
     ALLEGRO_DISPLAY* display;
@@ -36,4 +32,3 @@ struct Simulation
 };
 
 #endif
-
