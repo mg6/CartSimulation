@@ -1,16 +1,19 @@
-Cartulum
-========
+# Cart simulation
 
-As simple as a cart with a pendulum.
+A simple simulation of cart with pendulum.
 
-Installation
-------------
+## Building under Linux
 
 ```
 $ apt-get install liballegro5-dev
-$ git clone github.com:mg6/Cartulum
-$ cd Cartulum
+$ git clone github.com:mg6/CartSimulation
+$ cd CartSimulation
 $ make
-$ cd bin && ./Cartulum
+$ cd bin && ./CartSimulation
 ```
 
+## Building under Windows
+Use the VS solution from `win/` directory.
+
+## License
+Licensed under the terms of GNU GPL v2 license.

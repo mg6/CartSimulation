@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{544C960C-19CD-482E-88CC-C7AA1CE7C203}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Cartulum</RootNamespace>
+    <RootNamespace>CartSimulation</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

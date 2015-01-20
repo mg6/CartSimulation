@@ -6,7 +6,7 @@ INCLUDE=-I$(SRC)/.
 BIN=./bin
 SRC=./src
 ASSETS=./assets
-OUT=$(BIN)/Cartulum
+OUT=$(BIN)/CartSimulation
 OBJS=$(BIN)/pendulum.o $(BIN)/cart.o $(BIN)/pendulumcart.o $(BIN)/simulation.o $(BIN)/main.o
 
 all: prebuild $(OUT)
@@ -21,5 +21,5 @@ $(BIN)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CFLAGS) $< -c -o $@
 
 clean:
-	rm -rf $(BIN)/*o $(BIN)/Cartulum
+	rm -rf $(BIN)/*o $(BIN)/CartSimulation
 
