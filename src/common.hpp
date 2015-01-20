@@ -11,7 +11,7 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 
-const float gravity = 9.81;
+const double gravity = 9.81;
 
 struct Cart;
 struct Pendulum;

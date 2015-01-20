@@ -6,10 +6,10 @@
 
 struct Rectangle : public virtual Drawable
 {
-    float w;
-    float h;
+    double w;
+    double h;
 
-    Rectangle(float x, float y, float w, float h, char r = char(255), char g = 0, char b = 0) : w(w), h(h)
+    Rectangle(double x, double y, double w, double h, double r = char(255), char g = 0, char b = 0) : w(w), h(h)
     {
         this->x = x;
         this->y = y;
@@ -26,9 +26,9 @@ struct Rectangle : public virtual Drawable
 
 struct Circle : public virtual Drawable
 {
-    float rad;
+    double rad;
 
-    Circle(float x, float y, float rad, char r = char(255), char g = 0, char b = 0) : rad(rad)
+    Circle(double x, double y, double rad, char r = char(255), char g = 0, char b = 0) : rad(rad)
     {
         this->x = x;
         this->y = y;

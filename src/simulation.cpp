@@ -165,8 +165,8 @@ void Simulation::loop()
             case ALLEGRO_EVENT_TIMER:
                 if (e.timer.source == update_timer)
                 {
-                    static float old_time = 0;
-                    float cur_time = al_get_time();
+                    static double old_time = 0;
+                    double cur_time = al_get_time();
                     if (!paused) update(cur_time - old_time);
                     old_time = cur_time;
                 }
@@ -185,7 +185,7 @@ void Simulation::loop()
     }
 }
 
-void Simulation::update(float dt)
+void Simulation::update(double dt)
 {
     cart->update(dt);
 }

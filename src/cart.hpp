@@ -6,15 +6,15 @@
 
 struct Cart : public virtual Drawable
 {
-    Cart(PendulumCart* parent, float w, float h, float mass) :
+    Cart(PendulumCart* parent, double w, double h, double mass) :
         parent(parent), w(w), h(h), mass(mass) {}
 
-    void update(float dt) {}
+    void update(double dt) {}
     void draw(int height);
 
-    float w;
-    float h;
-    float mass;
+    double w;
+    double h;
+    double mass;
 
     PendulumCart* parent;
 };

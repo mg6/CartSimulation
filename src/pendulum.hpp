@@ -6,7 +6,7 @@
 
 struct Pendulum : public virtual Drawable
 {
-    Pendulum(Drawable* parent, float length, float mass, float velo, float rad) : parent(parent), length(length), mass(mass), rad(rad), av(velo)
+    Pendulum(Drawable* parent, double length, double mass, double velo, double rad) : parent(parent), length(length), mass(mass), rad(rad), av(velo)
     {
         x = parent->x;
         y = parent->y - 100;
@@ -14,17 +14,17 @@ struct Pendulum : public virtual Drawable
 
     ~Pendulum() {};
 
-    void update(float dt);
+    void update(double dt);
     void draw(int height);
 
     Drawable* parent;
-    float x;
-    float y;
-    float angle;
-    float av; // angular velocity
-    float length;
-    float mass;
-    float rad;
+    double x;
+    double y;
+    double angle;
+    double av; // angular velocity
+    double length;
+    double mass;
+    double rad;
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "pendulumcart.hpp"
 #include "simulation.hpp"
 
-PendulumCart::PendulumCart(Simulation* parent, float x, float y, float w, float h)
+PendulumCart::PendulumCart(Simulation* parent, double x, double y, double w, double h)
 {
     this->parent = parent;
     this->x = x;
@@ -18,7 +18,7 @@ PendulumCart::~PendulumCart()
     delete pendulum;
 }
 
-void PendulumCart::update(float dt)
+void PendulumCart::update(double dt)
 {
     // from http://www.myphysicslab.com/pendulum_cart.html
     double sh = sin(pendulum->angle);

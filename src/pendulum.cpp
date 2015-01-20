@@ -1,14 +1,14 @@
 #include "pendulum.hpp"
 
-void Pendulum::update(float dt)
+void Pendulum::update(double dt)
 {
     if (angle < -M_PI*2)
         angle += M_PI*2;
     else if (angle > M_PI*2)
         angle -= M_PI*2;
 
-    x = parent->x + sin(angle + M_PI) * 50 * length;
-    y = parent->y + cos(angle + M_PI) * 50 * length;
+    x = parent->x + sin(angle + M_PI) * 50.0 * length;
+    y = parent->y + cos(angle + M_PI) * 50.0 * length;
 }
 
 void Pendulum::draw(int height)

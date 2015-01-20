@@ -5,15 +5,15 @@
 
 struct Drawable
 {
-    float x;
-    float y;
+    double x;
+    double y;
 
     char r;
     char g;
     char b;
 
     virtual void draw(int height) = 0;
-    virtual void setPos(float x, float y)
+    virtual void setPos(double x, double y)
     {
         this->x = x;
         this->y = y;
