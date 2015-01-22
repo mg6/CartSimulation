@@ -22,7 +22,7 @@ struct Simulation
     static const int width = 800;
     static const int height = 600;
     const float fps = 60.0f;
-    const float updates_per_sec = 150.0f;
+    const float updates_per_sec = 100.0f;
     ALLEGRO_DISPLAY* display;
     ALLEGRO_EVENT_QUEUE* queue;
     ALLEGRO_FONT* font;
