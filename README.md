@@ -15,8 +15,7 @@ $ cd bin && ./CartSimulation
 ## Building under Windows
 
 ```
-$ git clone github.com:mg6/CartSimulation
-$ git submodule update
+$ git clone github.com:mg6/CartSimulation --recursive
 ```
 
 Proceed with the VS solution from `win/` directory.
