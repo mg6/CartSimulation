@@ -11,6 +11,12 @@ void Simulation::init()
 
     al_init_font_addon();
 
+    if (!al_init_primitives_addon())
+    {
+        std::cerr << "Error: Primitives addon initialization failed." << std::endl;
+        exit(1);
+    }
+
     if (!al_init_ttf_addon())
     {
         std::cerr << "Error: TTF addon initialization failed." << std::endl;
